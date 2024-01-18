@@ -7,7 +7,9 @@ import pyqtgraph.exporters
 from PyQt5 import QtCore
 from PyQt5.QtCore import Qt, QTranslator, QDateTime
 from PyQt5.QtWidgets import QMainWindow, QPushButton
+from PyQt5.uic.properties import QtGui
 
+from termocouple import spi1, read_temp1, cmd, spi0, read_temp
 from ui_file.complex_ui import Ui_MainWindow
 from localization import *
 from camera_control import *
@@ -64,49 +66,61 @@ class MainWindow(QMainWindow, Local_Language, Microscope):
         self.clock = (str(time.strftime("%d.%m.%Y  %H:%M:%S", time.localtime())))
         self.exporter.export(f'{self.clock}.png')
 
-
     def graph_temp(self, temp3):
-
         timestamp = QDateTime.currentDateTime().toSecsSinceEpoch()
         self.data['x'].append(timestamp)
         self.data['y'].append(temp3)
-        self.graphTemp.plot(pen='y').setData(self.data['x'], self.data['y'])
-        self.graphTemp.setXRange(timestamp - 60, timestamp)
+        self.ui.graphTemp.plot(pen='y').setData(self.data['x'], self.data['y'])
+        self.ui.graphTemp.setXRange(timestamp - 60, timestamp)
 
-    # def temp_1(self):
-    #     resp_1 = spi0.xfer2(cmd)
-    #     self.temp1 = read_temp(spi0)  # Чтение температуры с первого датчика
-    #
-    #     if resp_1 == [0, 0, 0, 0]:
-    #         msg = QMessageBox()
-    #         msg.setWindowTitle("Warning")
-    #         msg.setText("Warning - Thermocouple №1 NONE")
-    #         msg.setIcon(QMessageBox.Warning)
-    #         msg.exec_()
-    #         self.label_13.setPixmap(QtGui.QPixmap(":/whiteIcons/icons-white/red.svg"))
-    #         self.label_12.setText("WARNING")
-    #
-    #     else:
-    #
-    #         self.label_13.setPixmap(QtGui.QPixmap(":/whiteIcons/icons-white/green.svg"))
-    #         self.label_12.setText(f"Thermocouple №1 - {self.temp1} °C")
-    #
-    # def temp_2(self):
-    #     resp_2 = spi1.xfer2(cmd)
-    #     self.temp2 = read_temp1(spi1)  # Чтение температуры со второго датчика
-    #
-    #     if resp_2 == [0, 0, 0, 0]:
-    #         msg = QMessageBox()
-    #         msg.setWindowTitle("Warning")
-    #         msg.setText("Warning - Thermocouple №2 NONE")
-    #         msg.setIcon(QMessageBox.Warning)
-    #         msg.exec_()
-    #         self.label_11.setPixmap(QtGui.QPixmap(":/whiteIcons/icons-white/red.svg"))
-    #         self.label_14.setText("WARNING")
-    #     else:
-    #
-    #         self.label_11.setPixmap(QtGui.QPixmap(":/whiteIcons/icons-white/green.svg"))
-    #         self.label_14.setText(f"Thermocouple №2 - {self.temp2} °C")
+    def graph_temp_2(self, temp):
+        timestamp = QDateTime.currentDateTime().toSecsSinceEpoch()
+        self.data['x'].append(timestamp)
+        self.data['y'].append(temp)
+        self.ui.graphh_temp_2.plot(pen='y').setData(self.data['x'], self.data['y'])
+        self.ui.graphh_temp_2.setXRange(timestamp - 60, timestamp)
+
+    def graph_temp_3(self, temp):
+        timestamp = QDateTime.currentDateTime().toSecsSinceEpoch()
+        self.data['x'].append(timestamp)
+        self.data['y'].append(temp)
+        self.ui.graphh_temp_3.plot(pen='y').setData(self.data['x'], self.data['y'])
+        self.ui.graphh_temp_3.setXRange(timestamp - 60, timestamp)
+
+    def temp_1(self):
+        resp_1 = spi0.xfer2(cmd)
+        self.temp1 = read_temp(spi0)  # Чтение температуры с первого датчика
+
+        if resp_1 == [0, 0, 0, 0]:
+            # msg = QMessageBox()
+            # msg.setWindowTitle("Warning")
+            # msg.setText("Warning - Thermocouple №1 NONE")
+            # msg.setIcon(QMessageBox.Warning)
+            # msg.exec_()
+            self.label_13.setPixmap(QtGui.QPixmap(":/whiteIcons/icons-white/red.svg"))
+            self.label_12.setText("WARNING")
+
+        else:
+
+            self.label_13.setPixmap(QtGui.QPixmap(":/whiteIcons/icons-white/green.svg"))
+            self.label_12.setText(f"Thermocouple №1 - {self.temp1} °C")
+
+    def temp_2(self):
+        resp_2 = spi1.xfer2(cmd)
+        self.temp2 = read_temp1(spi1)  # Чтение температуры со второго датчика
+
+        if resp_2 == [0, 0, 0, 0]:
+            # msg = QMessageBox()
+            # msg.setWindowTitle("Warning")
+            # msg.setText("Warning - Thermocouple №2 NONE")
+            # msg.setIcon(QMessageBox.Warning)
+            # msg.exec_()
+            self.label_11.setPixmap(QtGui.QPixmap(":/whiteIcons/icons-white/red.svg"))
+            self.label_14.setText("WARNING")
+        else:
+
+            self.label_11.setPixmap(QtGui.QPixmap(":/whiteIcons/icons-white/green.svg"))
+            self.label_14.setText(f"Thermocouple №2 - {self.temp2} °C")
 
     @QtCore.pyqtSlot()
     def request_reading(self):
