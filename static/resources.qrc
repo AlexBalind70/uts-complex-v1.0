@@ -1,0 +1,45 @@
+<RCC>
+  <qresource prefix="whiteIcons">
+    <file>icons-white/Group 452.png</file>
+    <file>icons-white/save (1).svg</file>
+    <file>icons-white/Vector.svg</file>
+    <file>icons-white/green.svg</file>
+    <file>icons-white/logo.svg</file>
+    <file>icons-white/red.svg</file>
+    <file>icons-white/zoom-in.svg</file>
+    <file>icons-white/zoom-out.svg</file>
+    <file>icons-white/alert-circle (2).svg</file>
+    <file>icons-white/clock.svg</file>
+    <file>icons-white/move_corpus.svg</file>
+    <file>icons-white/compress.svg</file>
+    <file>icons-white/up.svg</file>
+    <file>icons-white/arrow-left (1).svg</file>
+    <file>icons-white/arrow-down (1).svg</file>
+    <file>icons-white/free-icon-clamp-939571 1 (Traced).svg</file>
+    <file>icons-white/arrow-right.svg</file>
+    <file>icons-white/arrow-up.svg</file>
+    <file>icons-white/home.svg</file>
+    <file>icons-white/mail.svg</file>
+    <file>icons-white/Group 1.svg</file>
+    <file>icons-white/tool (1).svg</file>
+    <file>icons-white/settings (1).svg</file>
+    <file>icons-white/fine-tip-pen).svg</file>
+    <file>icons-white/welding.svg</file>
+    <file>icons-white/crosshair.svg</file>
+    <file>icons-white/thermometer (2).svg</file>
+    <file>icons-white/activity.svg</file>
+    <file>icons-white/power (1).svg</file>
+    <file>icons-white/camera (2).svg</file>
+    <file>icons-white/camera-off (2).svg</file>
+    <file>icons-white/menu (3).svg</file>
+    <file>icons-white/zap.svg</file>
+    <file>icons-white/zap-off.svg</file>
+  </qresource>
+  <qresource prefix="green_icons">
+    <file>icons-green/auto.svg</file>
+  </qresource>
+  <qresource prefix="img">
+    <file>icons-white/Group.svg</file>
+    <file>icons-white/login.png</file>
+  </qresource>
+</RCC>
