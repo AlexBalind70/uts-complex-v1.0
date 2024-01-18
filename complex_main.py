@@ -1,4 +1,4 @@
-import smbus
+# import smbus
 import time
 import sys
 import pyqtgraph as pg
@@ -138,20 +138,16 @@ class MainWindow(QMainWindow, Local_Language, Microscope):
         self.graph_temp_3(temp=self.temp2)
 
     def moveUp(self):
-        return
-        # self.bus.write_byte(self.SLAVE_ADDRESS, ord('u'))
+        self.bus.write_byte(self.SLAVE_ADDRESS, ord('u'))
 
     def moveDown(self):
-        return
-#         self.bus.write_byte(self.SLAVE_ADDRESS, ord('d'))
+        self.bus.write_byte(self.SLAVE_ADDRESS, ord('d'))
 
     def moveLeft(self):
-        return
-        # self.bus.write_byte(self.SLAVE_ADDRESS, ord('l'))
+        self.bus.write_byte(self.SLAVE_ADDRESS, ord('l'))
 
     def moveRight(self):
-        return
-        # self.bus.write_byte(self.SLAVE_ADDRESS, ord('r'))
+        self.bus.write_byte(self.SLAVE_ADDRESS, ord('r'))
 
     def on_stackedWidget_currentChanged(self, index):
         btn_list = self.ui.leftMenu.findChildren(QPushButton)

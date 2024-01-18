@@ -199,7 +199,7 @@ class Microscope:
         white_square[:, :] = (255, 0, 255)
 
         move_info = "Move right " if distance_x > 0 else "Move left "
-        move_info += "and move down." if distance_y > 0 else "and move up."
+        move_info += self.moveDown() if distance_y > 0 else self.moveUp()
         labels.append(move_info)
         white_square.copy()
 
