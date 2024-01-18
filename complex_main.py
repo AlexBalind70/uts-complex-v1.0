@@ -66,14 +66,26 @@ class MainWindow(QMainWindow, Local_Language, Microscope):
         self.clock = (str(time.strftime("%d.%m.%Y  %H:%M:%S", time.localtime())))
         self.exporter.export(f'{self.clock}.png')
 
-
     def graph_temp(self, temp3):
-
         timestamp = QDateTime.currentDateTime().toSecsSinceEpoch()
         self.data['x'].append(timestamp)
         self.data['y'].append(temp3)
-        self.graphTemp.plot(pen='y').setData(self.data['x'], self.data['y'])
-        self.graphTemp.setXRange(timestamp - 60, timestamp)
+        self.ui.graphTemp.plot(pen='y').setData(self.data['x'], self.data['y'])
+        self.ui.graphTemp.setXRange(timestamp - 60, timestamp)
+
+    def graph_temp_2(self, temp):
+        timestamp = QDateTime.currentDateTime().toSecsSinceEpoch()
+        self.data['x'].append(timestamp)
+        self.data['y'].append(temp)
+        self.ui.graphh_temp_2.plot(pen='y').setData(self.data['x'], self.data['y'])
+        self.ui.graphh_temp_2.setXRange(timestamp - 60, timestamp)
+
+    def graph_temp_3(self, temp):
+        timestamp = QDateTime.currentDateTime().toSecsSinceEpoch()
+        self.data['x'].append(timestamp)
+        self.data['y'].append(temp)
+        self.ui.graphh_temp_3.plot(pen='y').setData(self.data['x'], self.data['y'])
+        self.ui.graphh_temp_3.setXRange(timestamp - 60, timestamp)
 
     def temp_1(self):
         resp_1 = spi0.xfer2(cmd)
