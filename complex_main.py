@@ -97,13 +97,13 @@ class MainWindow(QMainWindow, Local_Language, Microscope):
             # msg.setText("Warning - Thermocouple №1 NONE")
             # msg.setIcon(QMessageBox.Warning)
             # msg.exec_()
-            self.label_13.setPixmap(QtGui.QPixmap(":/whiteIcons/icons-white/red.svg"))
-            self.label_12.setText("WARNING")
+            self.ui.label_13.setPixmap(QtGui.QPixmap(":/whiteIcons/icons-white/red.svg"))
+            self.ui.label_12.setText("WARNING")
 
         else:
 
-            self.label_13.setPixmap(QtGui.QPixmap(":/whiteIcons/icons-white/green.svg"))
-            self.label_12.setText(f"Thermocouple №1 - {self.temp1} °C")
+            self.ui.label_13.setPixmap(QtGui.QPixmap(":/whiteIcons/icons-white/green.svg"))
+            self.ui.label_12.setText(f"Thermocouple №1 - {self.temp1} °C")
 
     def temp_2(self):
         resp_2 = spi1.xfer2(cmd)
@@ -115,12 +115,12 @@ class MainWindow(QMainWindow, Local_Language, Microscope):
             # msg.setText("Warning - Thermocouple №2 NONE")
             # msg.setIcon(QMessageBox.Warning)
             # msg.exec_()
-            self.label_11.setPixmap(QtGui.QPixmap(":/whiteIcons/icons-white/red.svg"))
-            self.label_14.setText("WARNING")
+            self.ui.label_11.setPixmap(QtGui.QPixmap(":/whiteIcons/icons-white/red.svg"))
+            self.ui.label_14.setText("WARNING")
         else:
 
-            self.label_11.setPixmap(QtGui.QPixmap(":/whiteIcons/icons-white/green.svg"))
-            self.label_14.setText(f"Thermocouple №2 - {self.temp2} °C")
+            self.ui.label_11.setPixmap(QtGui.QPixmap(":/whiteIcons/icons-white/green.svg"))
+            self.ui.label_14.setText(f"Thermocouple №2 - {self.temp2} °C")
 
     @QtCore.pyqtSlot()
     def request_reading(self):
@@ -131,7 +131,7 @@ class MainWindow(QMainWindow, Local_Language, Microscope):
         self.temp_2()
 
         temp3 = (self.temp1 + self.temp2) // 2
-        self.tempLabel.setText(f"{temp3} °C")
+        self.ui.tempLabel.setText(f"{temp3} °C")
 
         self.graph_temp(temp3)
 
