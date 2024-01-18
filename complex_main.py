@@ -134,6 +134,8 @@ class MainWindow(QMainWindow, Local_Language, Microscope):
         self.ui.tempLabel.setText(f"{temp3} °C")
 
         self.graph_temp(temp3)
+        self.graph_temp_2(temp=self.temp1)
+        self.graph_temp_3(temp=self.temp2)
 
     def moveUp(self):
         return
