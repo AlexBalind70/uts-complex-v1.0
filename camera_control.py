@@ -200,7 +200,7 @@ class Microscope:
 
         move_info = "Move right " if distance_x > 0 else "Move left "
         move_info += "and move down." if distance_y > 0 else "and move up."
-
+        labels.append(move_info)
         white_square.copy()
 
         current_height = 2
