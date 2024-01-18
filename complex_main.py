@@ -4,10 +4,10 @@ import sys
 import pyqtgraph as pg
 import pyqtgraph.exporters
 
-from PyQt5 import QtCore
+from PyQt5.QtCore import *
 from PyQt5.QtCore import Qt, QTranslator, QDateTime
 from PyQt5.QtWidgets import QMainWindow, QPushButton
-from PyQt5.uic.properties import QtGui
+from PyQt5 import QtGui
 
 from termocouple import spi1, read_temp1, cmd, spi0, read_temp
 from ui_file.complex_ui import Ui_MainWindow
@@ -47,8 +47,8 @@ class MainWindow(QMainWindow, Local_Language, Microscope):
         self.ui.buttonSaveGraph.clicked.connect(self.saveGraph)
 
         # # self.buttonAuto.clicked.connect()
-        # self.bus = smbus.SMBus(1)
-        # self.SLAVE_ADDRESS = 0x04
+        self.bus = smbus.SMBus(1)
+        self.SLAVE_ADDRESS = 0x04
 
     # def start_camera(self):
     #     self.is_camera1_opened = ~self.is_camera1_opened
